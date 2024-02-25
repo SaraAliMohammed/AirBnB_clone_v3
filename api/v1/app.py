@@ -15,6 +15,7 @@ def teardown_session(exception):
     """ Closes storage session """
     storage.close()
 
+
 @app.errorhandler(404)
 def page_not_foun(error):
     """ Loads a custom 404 page not found """
