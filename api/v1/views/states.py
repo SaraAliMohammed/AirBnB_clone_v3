@@ -53,9 +53,8 @@ def create_obj():
                  strict_slashes=False)
 def post_method(state_id):
     """ post method """
-    """
     if not request.is_json:
-        return make_response("Not a JSON", 400)"""
+        return make_response("Not a JSON", 400)
     st = storage.get(State, state_id)
     if st is None:
         abort(404)
