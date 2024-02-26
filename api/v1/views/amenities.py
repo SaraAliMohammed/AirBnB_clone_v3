@@ -39,7 +39,7 @@ def del_amenity(amenity_id):
                  strict_slashes=False)
 def create_amenity():
     """ create new instance """
-    f not request.is_json:
+    if not request.is_json:
         return make_response("Not a JSON", 400)
     if 'name' not in request.get_json():
         return make_response(jsonify({"error": "Missing name"}), 400)
@@ -53,7 +53,7 @@ def create_amenity():
                  strict_slashes=False)
 def put_amenity(amenity_id):
     """ Update amenity  """
-    f not request.is_json:
+    if not request.is_json:
         return make_response("Not a JSON", 400)
     obj = storage.get(Amenity, amenity_id)
     if obj is None:
