@@ -30,7 +30,7 @@ def get_city(city_id):
 
 @app_views.route('/cities/<string:city_id>', methods=['DELETE'],
                  strict_slashes=False)
-def del_method(city_id):
+def del_city(city_id):
     """ delete city by id"""
     city = storage.get(City, city_id)
     if city is None:
@@ -42,7 +42,7 @@ def del_method(city_id):
 
 @app_views.route('states/<string:state_id>/cities', methods=['POST'],
                  strict_slashes=False)
-def create_obj():
+def create_city(state_id):
     """ create new instance """
     state = storage.get(State, state_id)
     if state is None:
