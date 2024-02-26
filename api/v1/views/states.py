@@ -51,8 +51,8 @@ def create_obj():
 
 @app_views.route('/states/<string:state_id>', methods=['PUT'],
                  strict_slashes=False)
-def post_method(state_id):
-    """ post method """
+def put_state(state_id):
+    """ update method """
     if not request.is_json:
         return make_response("Not a JSON", 400)
     st = storage.get(State, state_id)
