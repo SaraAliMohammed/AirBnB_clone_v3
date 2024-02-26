@@ -39,6 +39,8 @@ def del_method(state_id):
                  strict_slashes=False)
 def create_obj():
     """ create new instance """
+    if not request.is_json:
+        return make_response("Not a JSON", 400)
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     if 'name' not in request.get_json():
@@ -53,8 +55,10 @@ def create_obj():
                  strict_slashes=False)
 def post_method(state_id):
     """ post method """
-    if not request.get_json():
-        return make_response(jsonify({"error": "Not a JSON"}), 400)
+    """if not request.get_json():
+        return make_response(jsonify({"error": "Not a JSON"}), 400)"""
+    if not request.is_json:
+        return make_response("Not a JSON", 400)
     st = storage.get(State, state_id)
     if st is None:
         abort(404)
